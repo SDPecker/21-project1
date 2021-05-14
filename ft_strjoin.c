@@ -1,10 +1,9 @@
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 	char	*r;
 
 	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);

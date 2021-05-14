@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdlib.h>
 int		get_word_len(char const *str, char c)
 {
 	int		i;
@@ -50,7 +49,7 @@ char **ft_split(char const *s, char c)
 	while (++i < count_words(s, c))
 	{
 		k = 0;
-		if (!(str2[i] = ft_strnew(get_word_len(&s[j], c) + 1)))
+		if (!(str2[i] = malloc(get_word_len(&s[j], c) + 1)))
 			str2[i] = NULL;
 		while (s[j] == c)
 			j++;

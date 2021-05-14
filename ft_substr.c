@@ -1,11 +1,10 @@
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*r;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	if (start > ft_strlen(s) - 1 || !s)
 		return (NULL);

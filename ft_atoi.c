@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int		power (int n, int p)
+int	power(int n, int p)
 {
 	int		r;
 
@@ -10,10 +10,51 @@ int		power (int n, int p)
 		r *= n;
 		p--;
 	}
-	return(r);
+	return (r);
 }
 
-int		ft_atoi(const char *nptr)
+int	det_sign(const char *s)
+{
+	int		i;
+	int		r;
+
+	i = 0;
+	r = 1;
+	while (s[i] == '+' || s[i] == '-')
+	{
+		if (s[i] == '-')
+			r *= (-1);
+		i++;
+	}
+	return (r);
+}
+
+int	skip(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] == '+' || s[i] == '-')
+		i++;
+	return (i);
+}
+
+int	count_digits(const char *s, int pos)
+{
+	int	i;
+	int	r;
+
+	i = pos;
+	r = 0;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		i++;
+		r++;
+	}
+	return (r);
+}
+
+int	ft_atoi(const char *nptr)
 {
 	int		res;
 	int		sign;
@@ -21,27 +62,14 @@ int		ft_atoi(const char *nptr)
 	int		i;
 
 	res = 0;
-	digit_ctr = 0;
-	sign = 1;
-	i = 0;
-	
-	while (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-			sign *= (-1);
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		i++;
-		digit_ctr++;
-	}
-	i -= digit_ctr;
+	sign = det_sign(nptr);
+	i = skip(nptr);
+	digit_ctr = count_digits(nptr, i);
 	while (digit_ctr > 0)
 	{
 		res += power(10, digit_ctr - 1) * (nptr[i] - 48);
 		digit_ctr--;
 		i++;
 	}
-	return(res * sign);
+	return (res * sign);
 }

@@ -1,7 +1,6 @@
 #include "libft.h"
-#include <stdlib.h>
 
-void	*ft_strndup(const char *s, size_t n)
+void	*ft_strdup(const char *s, size_t n)
 {
 	char	*res;
 	size_t	i;
