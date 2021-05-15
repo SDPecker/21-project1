@@ -3,13 +3,13 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	size_t j;
+	size_t	j;
 
-	i = 0;
+	if (size <= ft_strlen(dst))
+		return (ft_strlen(dst));
+	i = ft_strlen(dst);
 	j = 0;
-	while (dst[i])
-		i++;
-	while (j < size - ft_strlen(dst) && src[j])
+	while (j < size - ft_strlen(dst) - 1 && src[j])
 	{
 		dst[i] = src[j];
 		i++;
