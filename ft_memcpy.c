@@ -14,5 +14,5 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		r[i] = p[i];
 		i++;
 	}
-	return(r);
+	return (r);
 }

@@ -13,23 +13,23 @@ int	power(int n, int p)
 	return (r);
 }
 
-int		abs(int n)
+int	abs(int n)
 {
 	if (n < 0)
 		return (-1 * n);
 	return (n);
 }
 
-int		count_digits(int n)
+int	count_digits(int n)
 {
 	int		i;
 	int		t;
 
 	i = 1;
 	t = abs(n);
-	while(t / power(10, i) > 0)
+	while (t / power(10, i) > 0)
 		i++;
-	return(i);
+	return (i);
 }
 
 char	*ft_itoa(int n)
@@ -51,12 +51,12 @@ char	*ft_itoa(int n)
 	}
 	else
 		r = (char *)malloc(d + 1);
-	while(i < d)
+	while (i < d)
 	{
 		r[i] = t / power(10, count_digits(t) - 1) + 48;
 		t -= t / power(10, count_digits(t) - 1);
 		i++;
 	}
 	r[i] = 0;
-	return(r);
+	return (r);
 }

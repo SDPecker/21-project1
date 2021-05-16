@@ -7,8 +7,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	char	*r;
 
 	i = 0;
-	r = (char *)dst;
-	p = (char *)src;
+	r = (char *) dst;
+	p = (char *) src;
 	while (i < n && p[i])
 	{
 		*r = p[i];
@@ -16,7 +16,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		if (*r == c)
 		{
 			r++;
-			return(r);
+			return (r);
 		}
 		r++;
 	}

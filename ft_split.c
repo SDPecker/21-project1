@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int		get_word_len(char const *str, char c)
+int	get_word_len(char const *str, char c)
 {
 	int		i;
 	int		len;
@@ -17,7 +17,7 @@ int		get_word_len(char const *str, char c)
 	return (len);
 }
 
-int		count_words(char const *str, char c)
+int	count_words(char const *str, char c)
 {
 	int		count;
 	int		i;
@@ -36,21 +36,23 @@ int		count_words(char const *str, char c)
 	return (count);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
 	int		k;
 	char	**str2;
 
-	if (!s || !(str2 = (char **)malloc(sizeof(*str2) * (count_words(s, c) + 1))))
+	str2 = (char **)malloc(sizeof(*str2) * (count_words(s, c) + 1));
+	if (!s || !str2)
 		return (NULL);
 	i = -1;
 	j = 0;
 	while (++i < count_words(s, c))
 	{
 		k = 0;
-		if (!(str2[i] = malloc(get_word_len(&s[j], c) + 1)))
+		str2[i] = malloc(get_word_len(&s[j], c) + 1);
+		if (!str2[i])
 			str2[i] = NULL;
 		while (s[j] == c)
 			j++;
