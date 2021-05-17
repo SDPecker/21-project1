@@ -1,18 +1,5 @@
 #include "libft.h"
 
-int	power(int n, int p)
-{
-	int		r;
-
-	r = 1;
-	while (p > 0)
-	{
-		r *= n;
-		p--;
-	}
-	return (r);
-}
-
 int	abs(int n)
 {
 	if (n < 0)
@@ -20,14 +7,19 @@ int	abs(int n)
 	return (n);
 }
 
-int	count_digits(int n)
+int	count_char(int n)
 {
 	int		i;
 	int		t;
 
 	i = 1;
 	t = abs(n);
-	while (t / power(10, i) > 0)
+	while (t / 10 > 0)
+	{
+		i++;
+		t /= 10;
+	}
+	if (n < 0)
 		i++;
 	return (i);
 }
@@ -35,28 +27,25 @@ int	count_digits(int n)
 char	*ft_itoa(int n)
 {
 	int		d;
-	int		i;
 	char	*r;
 	int		t;
 
-	d = count_digits(n);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	d = count_char(n);
 	t = abs(n);
-	i = 0;
+	r = (char *)malloc(d + 1);
+	if (!r)
+		return (NULL);
+	r[d--] = 0;
 	if (n < 0)
+		r[0] = '-';
+	while (t > 0)
 	{
-		d++;
-		r = (char *)malloc(d + 2);
-		r[i] = '-';
-		i++;
+		r[d--] = t % 10 + 48;
+		t /= 10;
 	}
-	else
-		r = (char *)malloc(d + 1);
-	while (i < d)
-	{
-		r[i] = t / power(10, count_digits(t) - 1) + 48;
-		t -= t / power(10, count_digits(t) - 1);
-		i++;
-	}
-	r[i] = 0;
+	if (n == 0)
+		r[0] = 48;
 	return (r);
 }

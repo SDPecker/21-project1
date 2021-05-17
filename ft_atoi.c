@@ -13,32 +13,6 @@ int	power(int n, int p)
 	return (r);
 }
 
-int	det_sign(const char *s)
-{
-	int		i;
-	int		r;
-
-	i = 0;
-	r = 1;
-	while (s[i] == '+' || s[i] == '-')
-	{
-		if (s[i] == '-')
-			r *= (-1);
-		i++;
-	}
-	return (r);
-}
-
-int	skip(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] == '+' || s[i] == '-')
-		i++;
-	return (i);
-}
-
 int	count_digits(const char *s, int pos)
 {
 	int	i;
@@ -54,6 +28,16 @@ int	count_digits(const char *s, int pos)
 	return (r);
 }
 
+int	skip(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == ' ')
+		i++;
+	return (i);
+}
+
 int	ft_atoi(const char *nptr)
 {
 	int		res;
@@ -62,8 +46,15 @@ int	ft_atoi(const char *nptr)
 	int		i;
 
 	res = 0;
-	sign = det_sign(nptr);
+	sign = 1;
 	i = skip(nptr);
+	if (nptr[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
 	digit_ctr = count_digits(nptr, i);
 	while (digit_ctr > 0)
 	{

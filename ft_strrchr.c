@@ -2,23 +2,20 @@
 
 char	*ft_strrchr(const char *s, char c)
 {
-	char	*r;
 	size_t	i;
+	char	*r;
 
-	i = 0;
 	r = (char *)s;
-	while (*r)
-	{
-		r++;
-		i++;
-	}
-	r--;
+	if (!c)
+		return (&r[ft_strlen(r)]);
+	i = ft_strlen(s);
+	if (!i)
+		return (NULL);
 	while (i > 0)
 	{
-		if (*r == c)
-			return (r);
-		r--;
 		i--;
+		if (r[i] == c)
+			return (&r[i]);
 	}
 	return (NULL);
 }
