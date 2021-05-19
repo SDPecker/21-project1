@@ -2,8 +2,16 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
+	unsigned int	t;
 
-	str = ft_itoa(n);
-	ft_putstr_fd(str, fd);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		t = (unsigned int)(-1 * n);
+	}
+	else
+		t = (unsigned int)n;
+	if (t >= 10)
+		ft_putnbr_fd(t / 10, fd);
+	ft_putchar_fd((char)(t % 10 + 48), fd);
 }

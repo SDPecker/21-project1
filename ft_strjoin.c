@@ -6,7 +6,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	j;
 	char	*r;
 
+	if (!s1 || !s2)
+		return (NULL);
 	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!r)
+		return (NULL);
 	i = 0;
 	j = 0;
 	j = 0;

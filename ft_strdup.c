@@ -6,6 +6,8 @@ void	*ft_strdup(const char *s)
 	size_t	i;
 
 	res = (char *)malloc(ft_strlen(s) + 1);
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
